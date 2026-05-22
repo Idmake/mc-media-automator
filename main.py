@@ -15,10 +15,6 @@ def file_writeline(file, mode, line):
     with open(file, mode) as f:
         f.write(line+"\n")
 
-def file_write(file, mode, line):
-    with open(file, mode) as f:
-        f.write(line)
-
 def file_readline(file, line):
     with open(file, "r") as f:
         for i, ln in enumerate(f):
@@ -33,7 +29,7 @@ def save_custom_paths():
     # This file is so small, we can just override it
     file_writeline  (CUSTOM_PATHS_FILE_PATH, "w", CustomPath.Windows64Media_loc.get())
     file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Windows64Media.get())
-    file_write      (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Common_Media.get())
+    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Common_Media.get())
 
 def load_custom_paths():
     print("load custom paths file")
@@ -47,9 +43,9 @@ def load_custom_paths():
     StringVar.set(CustomPath.Common_Media,          file_readline(CUSTOM_PATHS_FILE_PATH, 2))
 
 class CustomPath:
-    Windows64Media_loc =            StringVar(window, None)
-    Windows64Media =                StringVar(window, None)
-    Common_Media =                  StringVar(window, None)
+    Windows64Media_loc =            StringVar(window, "")
+    Windows64Media =                StringVar(window, "")
+    Common_Media =                  StringVar(window, "")
 
 # Load custom paths, if file exists
 if load_paths: load_custom_paths()
@@ -72,7 +68,7 @@ class PathSelector:
         selected_path = filedialog.askopenfilename()
 
         # We didn't select anything, return
-        if selected_path == "":
+        if selected_path == "" or selected_path == None:
             return
         
         # We selected a path, set it.
@@ -82,6 +78,7 @@ class PathSelector:
 
 test1 = PathSelector(description="hi",      pathvariable=CustomPath.Windows64Media_loc)
 test2 = PathSelector(description="bye",     pathvariable=CustomPath.Windows64Media)
+test3 = PathSelector(description="bye",     pathvariable=CustomPath.Common_Media)
 
 window.mainloop()
 

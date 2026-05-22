@@ -21,7 +21,7 @@ def file_readline(file, line):
             if (i == line):
                 return ln.strip("\n")
             
-        print(line)
+        print("failed to read line, is line", line, "out of bounds?")
 
 def save_custom_paths():
     print("save/create custom paths file")
@@ -35,7 +35,7 @@ def load_custom_paths():
     print("load custom paths file")
 
     if not os.path.exists(CUSTOM_PATHS_FILE_PATH): 
-        print("no custom paths file found, skipping")
+        print("no custom paths file found, skipping loading")
         return
     
     StringVar.set(CustomPath.Windows64Media_loc,    file_readline(CUSTOM_PATHS_FILE_PATH, 0))

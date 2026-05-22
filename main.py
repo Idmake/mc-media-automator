@@ -49,7 +49,6 @@ class CustomPath:
 
 # Load custom paths, if file exists
 if load_paths: load_custom_paths()
-if save_paths: save_custom_paths()
 
 class PathSelector:
     def __init__(self, description, pathvariable):

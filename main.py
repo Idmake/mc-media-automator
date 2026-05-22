@@ -1,13 +1,59 @@
 from tkinter import *
 from tkinter import filedialog
+import os
+
+load_paths = True
+save_paths = True
+
+FOLDER_PATH = os.path.dirname(__file__).replace("\\", "/")
+CUSTOM_PATHS_FILE_PATH = FOLDER_PATH + "/custom_paths.txt"
 
 window = Tk()
 window.geometry("400x400")
 
+def file_writeline(file, mode, line):
+    with open(file, mode) as f:
+        f.write(line+"\n")
+
+def file_write(file, mode, line):
+    with open(file, mode) as f:
+        f.write(line)
+
+def file_readline(file, line):
+    with open(file, "r") as f:
+        for i, ln in enumerate(f):
+            if (i == line):
+                return ln.strip("\n")
+            
+        print(line)
+
+def save_custom_paths():
+    print("save/create custom paths file")
+
+    # This file is so small, we can just override it
+    file_writeline  (CUSTOM_PATHS_FILE_PATH, "w", CustomPath.Windows64Media_loc.get())
+    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Windows64Media.get())
+    file_write      (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Common_Media.get())
+
+def load_custom_paths():
+    print("load custom paths file")
+
+    if not os.path.exists(CUSTOM_PATHS_FILE_PATH): 
+        print("no custom paths file found, skipping")
+        return
+    
+    StringVar.set(CustomPath.Windows64Media_loc,    file_readline(CUSTOM_PATHS_FILE_PATH, 0))
+    StringVar.set(CustomPath.Windows64Media,        file_readline(CUSTOM_PATHS_FILE_PATH, 1))
+    StringVar.set(CustomPath.Common_Media,          file_readline(CUSTOM_PATHS_FILE_PATH, 2))
+
 class CustomPath:
-    Windows64Media_loc =            StringVar(window, "D:/Games/MinecraftConsoles/Minecraft.Client/Windows64Media/loc")
-    Windows64Media =                StringVar(window, "D:/Games/MinecraftConsoles/Minecraft.Client/Windows64Media")
-    Common_Media =                  StringVar(window, "D:/Games/MinecraftConsoles/Minecraft.Client/Common/Media/")
+    Windows64Media_loc =            StringVar(window, None)
+    Windows64Media =                StringVar(window, None)
+    Common_Media =                  StringVar(window, None)
+
+# Load custom paths, if file exists
+if load_paths: load_custom_paths()
+if save_paths: save_custom_paths()
 
 class PathSelector:
     def __init__(self, description, pathvariable):
@@ -38,3 +84,6 @@ test1 = PathSelector(description="hi",      pathvariable=CustomPath.Windows64Med
 test2 = PathSelector(description="bye",     pathvariable=CustomPath.Windows64Media)
 
 window.mainloop()
+
+# Save paths after closing window
+if save_paths: save_custom_paths()

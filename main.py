@@ -9,7 +9,7 @@ FOLDER_PATH = os.path.dirname(__file__).replace("\\", "/")
 CUSTOM_PATHS_FILE_PATH = FOLDER_PATH + "/custom_paths.txt"
 
 window = Tk()
-window.geometry("400x400")
+window.geometry("540x400")
 
 def file_writeline(file, mode, line):
     with open(file, mode) as f:
@@ -79,10 +79,12 @@ class PathSelector:
         StringVar.set(pathvariable, selected_path)
         
 
+title = Label(window, text="Select the paths to the following folders:").pack(pady=10)
+
 frame = Frame(window)
-test1 = PathSelector(description="TEST12345",   row=0,  pathvariable=CustomPath.Windows64Media_loc)
-test2 = PathSelector(description="bye",         row=1,  pathvariable=CustomPath.Windows64Media)
-test3 = PathSelector(description="bye",         row=2,  pathvariable=CustomPath.Common_Media)
+test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",   row=1,  pathvariable=CustomPath.Windows64Media_loc)
+test2 = PathSelector(description="Minecraft.Client/Windows64Media/",       row=2,  pathvariable=CustomPath.Windows64Media)
+test3 = PathSelector(description="Minecraft.Client/Common/Media/",         row=3,  pathvariable=CustomPath.Common_Media)
 
 window.mainloop()
 

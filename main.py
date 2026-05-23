@@ -51,12 +51,17 @@ class CustomPath:
 if load_paths: load_custom_paths()
 
 class PathSelector:
-    def __init__(self, description, pathvariable):
-        
-        Label(window,   text=           description).pack(pady=10)
-        Entry(window,   textvariable=   pathvariable).pack()
-        Button(window,  text=           "browse",   command=lambda: self.set_pathvariable(      pathvariable=pathvariable)).pack()
-        Button(window,  text=           "clear",    command=lambda: self.clear_pathvariable(    pathvariable=pathvariable)).pack()
+    def __init__(self, description, row, pathvariable):
+        label = Label(frame,   text=           description)
+        entry = Entry(frame,   textvariable=   pathvariable)
+        buttonBrowse = Button(frame,  text=           "browse",   command=lambda: self.set_pathvariable(      pathvariable=pathvariable))
+        buttonClear = Button(frame,  text=           "clear",    command=lambda: self.clear_pathvariable(    pathvariable=pathvariable))
+
+        frame.pack()
+        label.grid(         row=row,    column=0,   padx=5, sticky="E")
+        entry.grid(         row=row,    column=1,   padx=5)
+        buttonBrowse.grid(  row=row,    column=2,   padx=5)
+        buttonClear.grid(   row=row,    column=3,   padx=5)
 
     # Clear pathvariable associated with this instance
     def clear_pathvariable(self, pathvariable):
@@ -74,10 +79,10 @@ class PathSelector:
         StringVar.set(pathvariable, selected_path)
         
 
-
-test1 = PathSelector(description="hi",      pathvariable=CustomPath.Windows64Media_loc)
-test2 = PathSelector(description="bye",     pathvariable=CustomPath.Windows64Media)
-test3 = PathSelector(description="bye",     pathvariable=CustomPath.Common_Media)
+frame = Frame(window)
+test1 = PathSelector(description="TEST12345",   row=0,  pathvariable=CustomPath.Windows64Media_loc)
+test2 = PathSelector(description="bye",         row=1,  pathvariable=CustomPath.Windows64Media)
+test3 = PathSelector(description="bye",         row=2,  pathvariable=CustomPath.Common_Media)
 
 window.mainloop()
 

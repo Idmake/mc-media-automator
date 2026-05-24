@@ -86,6 +86,11 @@ test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",   row=1
 test2 = PathSelector(description="Minecraft.Client/Windows64Media/",       row=2,  pathvariable=CustomPath.Windows64Media)
 test3 = PathSelector(description="Minecraft.Client/Common/Media/",         row=3,  pathvariable=CustomPath.Common_Media)
 
+buttonFrame = Frame(window, bg="red")
+quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: print("quit button")).    grid(row=0, column=0, padx=5, pady=10)
+runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: print("run script")).     grid(row=0, column=1, padx=5, pady=10)
+buttonFrame.pack(anchor=SE, expand=True)
+
 window.mainloop()
 
 # Save paths after closing window

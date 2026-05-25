@@ -10,11 +10,10 @@ def run_script(CustomPath, PredefinedPath):
 
     def ErrorUponFaliure(returnCode):
         if returnCode != 0:
+            subprocess.run(f"echo:", shell=True)
+            subprocess.run(f"echo Command failed to execute.", shell=True)
+            subprocess.run(f"echo:", shell=True)
             tkinter.messagebox.showerror(message=f"An unknown error occurred; check the output for more information if possible.")
-            subprocess.run(f"echo Command failed to execute. && pause", shell=True)
-            subprocess.run(f"echo:", shell=True)
-            subprocess.run(f"echo #### PYTHON TRACEBACK ####:", shell=True)
-            subprocess.run(f"echo:", shell=True)
             raise ValueError(f"Error code {returnCode}")
         
     def SetDirectory(path):

@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 import os
-import logic
+import script
 
 load_paths = True
 save_paths = True
@@ -92,7 +92,7 @@ test3 = PathSelector(description="Minecraft.Client/Common/Media/",         row=3
 
 buttonFrame =   Frame(window, bg="red")
 quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)
-runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: logic.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).     grid(row=0, column=1, padx=5, pady=10)
+runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: script.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).    grid(row=0, column=1, padx=5, pady=10)
 buttonFrame.pack(anchor=SE, expand=True)
 
 window.mainloop()

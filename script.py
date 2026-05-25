@@ -2,6 +2,7 @@ def run_script(CustomPath, PredefinedPath):
     import subprocess
     import os
     import zipfile
+    import tkinter.messagebox
 
     def ExecuteCommand(args, shell):
         returnCode = subprocess.run(args=args, shell=shell).returncode
@@ -9,6 +10,7 @@ def run_script(CustomPath, PredefinedPath):
 
     def ErrorUponFaliure(returnCode):
         if returnCode != 0:
+            tkinter.messagebox.showerror(message=f"An unknown error occurred; check the output for more information if possible.")
             subprocess.run(f"echo Command failed to execute. && pause", shell=True)
             subprocess.run(f"echo:", shell=True)
             subprocess.run(f"echo #### PYTHON TRACEBACK ####:", shell=True)

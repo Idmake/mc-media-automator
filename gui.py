@@ -2,55 +2,8 @@ from tkinter import *
 from tkinter import filedialog
 import os
 import script
-
-load_paths = True
-save_paths = True
-
-FOLDER_PATH = os.path.dirname(__file__).replace("\\", "/")
-CUSTOM_PATHS_FILE_PATH = FOLDER_PATH + "/custom_paths.txt"
-
-window = Tk()
-window.geometry("540x400")
-
-def file_writeline(file, mode, line):
-    with open(file, mode) as f:
-        f.write(line+"\n")
-
-def file_readline(file, line):
-    with open(file, "r") as f:
-        for i, ln in enumerate(f):
-            if (i == line):
-                return ln.strip("\n")
-            
-        print("failed to read line, is line", line, "out of bounds?")
-
-def save_custom_paths():
-    print("save/create custom paths file")
-
-    # This file is so small, we can just override it
-    file_writeline  (CUSTOM_PATHS_FILE_PATH, "w", CustomPath.Windows64Media_loc.get())
-    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Windows64Media.get())
-    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Common_Media.get())
-
-def load_custom_paths():
-    print("load custom paths file")
-
-    if not os.path.exists(CUSTOM_PATHS_FILE_PATH): 
-        print("no custom paths file found, skipping loading")
-        return
-    
-    StringVar.set(CustomPath.Windows64Media_loc,    file_readline(CUSTOM_PATHS_FILE_PATH, 0))
-    StringVar.set(CustomPath.Windows64Media,        file_readline(CUSTOM_PATHS_FILE_PATH, 1))
-    StringVar.set(CustomPath.Common_Media,          file_readline(CUSTOM_PATHS_FILE_PATH, 2))
-
-class CustomPath:
-    Windows64Media_loc =            StringVar(window, "")
-    Windows64Media =                StringVar(window, "")
-    Common_Media =                  StringVar(window, "")
-
-class PredefinedPath:
-    mc_arc_util_master = FOLDER_PATH + "/mc-arc-util-master"
-    MCLCE_StringTable_Compiler = FOLDER_PATH + "/MCLCE-StringTable-Compiler-Master"
+from init_window import window
+from custom_paths import load_custom_paths, save_custom_paths, CustomPath, PredefinedPath, load_paths, save_paths, FOLDER_PATH
 
 # Load custom paths, if file exists
 if load_paths: load_custom_paths()

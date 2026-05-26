@@ -1,25 +1,39 @@
+import subprocess
+import os
+import zipfile
+import tkinter.messagebox
+from class_vars_funcs import get_class_stringvars, get_class_vars
+from invalid_path_funcs import get_invalid_path_index
+
+def error_upon_failure(returnCode):
+    if returnCode != 0:
+        subprocess.run(f"echo:", shell=True)
+        subprocess.run(f"echo Command failed to execute.", shell=True)
+        subprocess.run(f"echo:", shell=True)
+        tkinter.messagebox.showerror(message=f"An unknown error occurred; check the output for more information if possible.")
+        raise ValueError(f"Error code {returnCode}") #TODO: Write this to a file called "traceback.txt", so the output doesn't get clogged
+
+def execute_command(args, shell):
+    returnCode = subprocess.run(args=args, shell=shell).returncode
+    error_upon_failure(returnCode)
+
+def set_directory(path):
+    os.chdir(path=path)
+
 def run_script(CustomPath, PredefinedPath):
-    import subprocess
-    import os
-    import zipfile
-    import tkinter.messagebox
 
-    def execute_command(args, shell):
-        returnCode = subprocess.run(args=args, shell=shell).returncode
-        error_upon_failure(returnCode)
+    custompaths = get_class_stringvars(CustomPath)
+    invalid_path_index = get_invalid_path_index(custompaths)
 
-    def error_upon_failure(returnCode):
-        if returnCode != 0:
-            subprocess.run(f"echo:", shell=True)
-            subprocess.run(f"echo Command failed to execute.", shell=True)
-            subprocess.run(f"echo:", shell=True)
-            tkinter.messagebox.showerror(message=f"An unknown error occurred; check the output for more information if possible.")
-            raise ValueError(f"Error code {returnCode}")
-        
-    def set_directory(path):
-        os.chdir(path=path)
+    if invalid_path_index != -1:
+        if custompaths[invalid_path_index] == "":       tkinter.messagebox.showerror(message=f"An empty path at index {invalid_path_index} was found.")
+        else:                                           tkinter.messagebox.showerror(message=f"Invalid path \"{custompaths[invalid_path_index]}\" at index {invalid_path_index}.")
+
+        return False
+    
 
 
+    
     # xcopy "source file" "destination file" /Y /-I
     # xcopy "source file" "destination folder" /Y /I
     # erase "source file"

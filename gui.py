@@ -11,15 +11,18 @@ if load_paths: load_custom_paths()
 class PathSelector:
     def __init__(self, description, row, pathvariable):
         label = Label(frame,   text=           description)
-        entry = Entry(frame,   textvariable=   pathvariable)
-        buttonBrowse = Button(frame,  text=           "browse",   command=lambda: self.set_pathvariable(      pathvariable=pathvariable))
-        buttonClear = Button(frame,  text=           "clear",    command=lambda: self.clear_pathvariable(    pathvariable=pathvariable))
+        entry = Entry(frame,   textvariable=   pathvariable, width=window.winfo_vrootwidth()) #TODO: Currently this only sets the width to a max value and doesn't dynamically change it.
+        buttonBrowse = Button(frame,  text=         "browse",   command=lambda: self.set_pathvariable(      pathvariable=pathvariable))
+        buttonClear = Button(frame,  text=          "clear",    command=lambda: self.clear_pathvariable(    pathvariable=pathvariable))
 
         frame.pack()
-        label.grid(         row=row,    column=0,   padx=5, sticky="E")
+        label.grid(         row=row,    column=0,   padx=5, sticky="e")
         entry.grid(         row=row,    column=1,   padx=5)
         buttonBrowse.grid(  row=row,    column=2,   padx=5)
         buttonClear.grid(   row=row,    column=3,   padx=5)
+
+        # How widgets should behave when the window is resized, in this case the entry width should increase with the window
+        frame.columnconfigure(index=1, weight=1)
 
     # Clear pathvariable associated with this instance
     def clear_pathvariable(self, pathvariable):

@@ -97,8 +97,6 @@ def run_script(CustomPath, PredefinedPath):
     def replace_mediawindows64_arc():
         print("REPLACING MEDIAWINDOWS64 ARC FILE")
         set_directory(PredefinedPath.mc_arc_util_master)
-        print("\n[WARNING] MediaWindows64.arc will be replaced with a new version, make sure to create a backup before you continue.")
-        execute_command(f"pause", shell=True)
         execute_command(f"xcopy out.arc \"{CustomPath.MediaWindows64_arc.get()}\" /Y /-I", shell=True)
 
 

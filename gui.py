@@ -39,9 +39,9 @@ class PathSelector:
 title = Label(window, text="Select the paths to the following folders:").pack(pady=10)
 
 frame = Frame(window)
-test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",   row=1,  pathvariable=CustomPath.Windows64Media_loc)
-test2 = PathSelector(description="Minecraft.Client/Windows64Media/",       row=2,  pathvariable=CustomPath.Windows64Media)
-test3 = PathSelector(description="Minecraft.Client/Common/Media/",         row=3,  pathvariable=CustomPath.Common_Media)
+test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                row=1,  pathvariable=CustomPath.Windows64Media_loc)
+test2 = PathSelector(description="Minecraft.Client/Windows64Media/",                    row=2,  pathvariable=CustomPath.Windows64Media)
+test3 = PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    row=3,  pathvariable=CustomPath.MediaWindows64_arc)
 
 buttonFrame =   Frame(window, bg="red")
 quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)

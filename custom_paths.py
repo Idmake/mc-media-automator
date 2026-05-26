@@ -13,7 +13,7 @@ save_paths = True
 class CustomPath:
     Windows64Media_loc =            StringVar(window, "")
     Windows64Media =                StringVar(window, "")
-    Common_Media =                  StringVar(window, "")
+    MediaWindows64_arc =            StringVar(window, "")
 
 class PredefinedPath:
     mc_arc_util_master = FOLDER_PATH + "/mc-arc-util-master"
@@ -27,7 +27,7 @@ def save_custom_paths():
     # This file is so small, we can just override it
     file_writeline  (CUSTOM_PATHS_FILE_PATH, "w", CustomPath.Windows64Media_loc.get())
     file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Windows64Media.get())
-    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.Common_Media.get())
+    file_writeline  (CUSTOM_PATHS_FILE_PATH, "a", CustomPath.MediaWindows64_arc.get())
 
 def load_custom_paths():
     print("load custom paths file")
@@ -38,4 +38,4 @@ def load_custom_paths():
     
     StringVar.set(CustomPath.Windows64Media_loc,    file_readline(CUSTOM_PATHS_FILE_PATH, 0))
     StringVar.set(CustomPath.Windows64Media,        file_readline(CUSTOM_PATHS_FILE_PATH, 1))
-    StringVar.set(CustomPath.Common_Media,          file_readline(CUSTOM_PATHS_FILE_PATH, 2))
+    StringVar.set(CustomPath.MediaWindows64_arc,    file_readline(CUSTOM_PATHS_FILE_PATH, 2))

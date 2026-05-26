@@ -46,7 +46,7 @@ test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",        
 test2 = PathSelector(description="Minecraft.Client/Windows64Media/",                    row=2,  pathvariable=CustomPath.Windows64Media)
 test3 = PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    row=3,  pathvariable=CustomPath.MediaWindows64_arc)
 
-buttonFrame =   Frame(window, bg="red")
+buttonFrame =   Frame(window)
 quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)
 runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: script.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).    grid(row=0, column=1, padx=5, pady=10)
 buttonFrame.pack(anchor=SE, expand=True)

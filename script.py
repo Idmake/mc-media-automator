@@ -60,7 +60,7 @@ def run_script(CustomPath, PredefinedPath):
     def convert_arc_to_zip():
         print("CONVERTING ARC TO ZIP")
         set_directory(PredefinedPath.mc_arc_util_master)
-        execute_command(f"python arc2zip.py {CustomPath.MediaWindows64_arc}", shell=True)
+        execute_command(f"python arc2zip.py {CustomPath.MediaWindows64_arc.get()}", shell=True)
 
     def modify_zip():
         print("MODIFIYING ZIP")

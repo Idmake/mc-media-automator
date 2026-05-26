@@ -10,7 +10,7 @@ def error_upon_failure(returnCode):
         subprocess.run(f"echo:", shell=True)
         subprocess.run(f"echo Command failed to execute.", shell=True)
         subprocess.run(f"echo:", shell=True)
-        tkinter.messagebox.showerror(message=f"An unknown error occurred; check the output for more information if possible.")
+        tkinter.messagebox.showerror(message=f"An unknown error occurred!\nPlease check if you have inserted the correct paths.")
         raise ValueError(f"Error code {returnCode}") #TODO: Write this to a file called "traceback.txt", so the output doesn't get clogged
 
 def execute_command(args, shell):
@@ -99,7 +99,7 @@ def run_script(CustomPath, PredefinedPath):
         set_directory(PredefinedPath.mc_arc_util_master)
         print("\n[WARNING] MediaWindows64.arc will be replaced with a new version, make sure to create a backup before you continue.")
         execute_command(f"pause", shell=True)
-        execute_command(f"xcopy out.arc \"{CustomPath.MediaWindows64_arfc}\" /Y /-I", shell=True)
+        execute_command(f"xcopy out.arc \"{CustomPath.MediaWindows64_arc}\" /Y /-I", shell=True)
 
 
 

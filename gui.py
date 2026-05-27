@@ -52,9 +52,9 @@ class PathSelector(Frame):
 
 title = Label(window, text="Select the paths to the following things:").pack(pady=3)
 
-test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
-test2 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
-test3 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
+test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                pathvariable=CustomPath.Windows64Media_loc)
+test2 = PathSelector(description="Minecraft.Client/Windows64Media/",                    pathvariable=CustomPath.Windows64Media)
+test3 = PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    pathvariable=CustomPath.MediaWindows64_arc)
 
 buttonFrame =   Frame(window)
 quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)

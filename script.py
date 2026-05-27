@@ -107,3 +107,4 @@ def run_script(CustomPath, PredefinedPath):
     modify_zip()
     convert_zip_to_arc()
     replace_mediawindows64_arc()
+    tkinter.messagebox.showinfo(message=f"File was replaced successfully.", icon="info")

@@ -50,16 +50,15 @@ class PathSelector(Frame):
         StringVar.set(pathvariable, selected_path)
         
 
-title = Label(window, text="Select the paths to the following things:").pack(pady=3)
+Label(window, text="Select the paths to the following things:").pack(pady=3)
 
-test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                pathvariable=CustomPath.Windows64Media_loc)
-test2 = PathSelector(description="Minecraft.Client/Windows64Media/",                    pathvariable=CustomPath.Windows64Media)
-test3 = PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    pathvariable=CustomPath.MediaWindows64_arc)
+PathSelector(description="Minecraft.Client/Windows64Media/loc/",                pathvariable=CustomPath.Windows64Media_loc)
+PathSelector(description="Minecraft.Client/Windows64Media/",                    pathvariable=CustomPath.Windows64Media)
+PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    pathvariable=CustomPath.MediaWindows64_arc)
 
-buttonFrame =   Frame(window)
-quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)
-runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: script.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).    grid(row=0, column=1, padx=5, pady=10)
-buttonFrame.pack(anchor=SE, expand=True)
+buttonFrame = Frame(window).pack(anchor=SE, expand=True)
+Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)
+Button(buttonFrame, text="Run",  width=10, command=lambda: script.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).    grid(row=0, column=1, padx=5, pady=10)
 
 window.mainloop()
 

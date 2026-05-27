@@ -13,10 +13,12 @@ class PathSelector(Frame):
     def __init__(self, description, pathvariable):
         Frame.__init__(self)
         self.pack()
-        self.create_widgets(description=description)
+        self.pathvariable = pathvariable
+        self.description = description
+        self.create_widgets()
 
-    def create_widgets(self, description):
-        Label(self, text=description).pack(pady=10, anchor=N)
+    def create_widgets(self):
+        Label(self, text=self.description).pack(pady=10)
         self.create_panel()
 
     def create_panel(self):
@@ -24,8 +26,8 @@ class PathSelector(Frame):
         panel.pack()
         frame =         Frame(panel)
         entry =         Entry(frame, width=60)
-        buttonBrowse =  Button(frame, text="browse", command=lambda: print("browsing files"))
-        buttonClear =   Button(frame, text="clear", command=lambda: print("im clear"))
+        buttonBrowse =  Button(frame, text="browse",    command=lambda: self.set_pathvariable(self.pathvariable))
+        buttonClear =   Button(frame, text="clear",     command=lambda: self.clear_pathvariable(self.pathvariable))
 
         entry.pack(side=LEFT)
         buttonBrowse.pack(side=LEFT, padx=5)
@@ -53,12 +55,10 @@ test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",        
 test2 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
 test3 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
 
-"""
 buttonFrame =   Frame(window)
 quitButton =    Button(buttonFrame, text="Quit", width=10, command=lambda: window.quit()).                                                              grid(row=0, column=0, padx=5, pady=10)
 runButton =     Button(buttonFrame, text="Run",  width=10, command=lambda: script.run_script(CustomPath=CustomPath, PredefinedPath=PredefinedPath)).    grid(row=0, column=1, padx=5, pady=10)
 buttonFrame.pack(anchor=SE, expand=True)
-"""
 
 window.mainloop()
 

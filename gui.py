@@ -8,7 +8,8 @@ from custom_paths import load_custom_paths, save_custom_paths, CustomPath, Prede
 # Load custom paths, if file exists
 if load_paths: load_custom_paths()
 
-class PathSelector(Frame):
+#See https://pyinmyeye.blogspot.com/2012/08/tkinter-filedialog-demo.html?m=1 for reference
+class PathSelector(Frame): 
     def __init__(self, description, pathvariable):
         Frame.__init__(self)
         self.pack(expand=Y, fill=BOTH)
@@ -16,7 +17,7 @@ class PathSelector(Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        Label(window, text="Select the paths to the following folders:").pack(pady=10, anchor=N)
+        Label(self, text="Select the paths to the following folders:").pack(pady=10, anchor=N)
         self.create_panel()
 
     def create_panel(self):

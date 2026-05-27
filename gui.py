@@ -50,6 +50,7 @@ class PathSelector(Frame):
         StringVar.set(pathvariable, selected_path)
         
 
+title = Label(window, text="Select the paths to the following things:").pack(pady=3)
 
 test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
 test2 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)

@@ -25,7 +25,7 @@ class PathSelector(Frame):
         panel = Frame(self)
         panel.pack()
         frame =         Frame(panel)
-        entry =         Entry(frame, width=60)
+        entry =         Entry(frame, width=60, textvariable=self.pathvariable)
         buttonBrowse =  Button(frame, text="browse",    command=lambda: self.set_pathvariable(self.pathvariable))
         buttonClear =   Button(frame, text="clear",     command=lambda: self.clear_pathvariable(self.pathvariable))
 

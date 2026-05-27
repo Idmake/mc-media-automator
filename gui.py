@@ -10,11 +10,12 @@ if load_paths: load_custom_paths()
 
 #See https://pyinmyeye.blogspot.com/2012/08/tkinter-filedialog-demo.html?m=1 for reference
 class PathSelector(Frame): 
-    def __init__(self, description, pathvariable):
+    def __init__(self, description, pathvariable, filedialog_type):
         Frame.__init__(self)
         self.pack()
-        self.pathvariable = pathvariable
         self.description = description
+        self.pathvariable = pathvariable
+        self.filedialog_type = filedialog_type
         self.create_widgets()
 
     def create_widgets(self):
@@ -40,7 +41,7 @@ class PathSelector(Frame):
 
     # Select a new path for the pathvariable
     def set_pathvariable(self, pathvariable):
-        selected_path = filedialog.askopenfilename()
+        selected_path = self.filedialog_type()
 
         # We didn't select anything, return
         if selected_path == "" or selected_path == None:
@@ -52,9 +53,9 @@ class PathSelector(Frame):
 
 Label(window, text="Select the paths to the following things:").pack(pady=3)
 
-PathSelector(description="Minecraft.Client/Windows64Media/loc/",                pathvariable=CustomPath.Windows64Media_loc)
-PathSelector(description="Minecraft.Client/Windows64Media/",                    pathvariable=CustomPath.Windows64Media)
-PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    pathvariable=CustomPath.MediaWindows64_arc)
+PathSelector(description="Minecraft.Client/Windows64Media/loc/",                pathvariable=CustomPath.Windows64Media_loc, filedialog_type=lambda: filedialog.askdirectory())
+PathSelector(description="Minecraft.Client/Windows64Media/",                    pathvariable=CustomPath.Windows64Media,     filedialog_type=lambda: filedialog.askdirectory())
+PathSelector(description="Minecraft.Client/Common/Media/MediaWindows64.arc",    pathvariable=CustomPath.MediaWindows64_arc, filedialog_type=lambda: filedialog.askopenfilename(filetypes=[("ARC file", "*.arc"), ("All files", "*.*")]))
 
 buttonFrame = Frame(window)
 buttonFrame.pack(anchor=SE, expand=True)

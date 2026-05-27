@@ -12,28 +12,25 @@ if load_paths: load_custom_paths()
 class PathSelector(Frame): 
     def __init__(self, description, pathvariable):
         Frame.__init__(self)
-        self.pack(expand=Y, fill=BOTH)
-        self.master.title("hello world")
-        self.create_widgets()
+        self.pack()
+        self.create_widgets(description=description)
 
-    def create_widgets(self):
-        Label(self, text="Select the paths to the following folders:").pack(pady=10, anchor=N)
+    def create_widgets(self, description):
+        Label(self, text=description).pack(pady=10, anchor=N)
         self.create_panel()
 
     def create_panel(self):
         panel = Frame(self)
-        panel.pack(side=TOP, fill=BOTH, expand=Y)
+        panel.pack()
         frame =         Frame(panel)
-        label =         Label(frame, width=20, text="TEST LABEL")
-        entry =         Entry(frame, width=25)
+        entry =         Entry(frame, width=60)
         buttonBrowse =  Button(frame, text="browse", command=lambda: print("browsing files"))
         buttonClear =   Button(frame, text="clear", command=lambda: print("im clear"))
 
-        label.pack(side=LEFT)
         entry.pack(side=LEFT)
         buttonBrowse.pack(side=LEFT, padx=5)
         buttonClear.pack(side=LEFT, padx=5)
-        frame.pack(fill=X, padx="1c", pady=3)
+        frame.pack(padx="1c", pady=3)
 
     # Clear pathvariable associated with this instance
     def clear_pathvariable(self, pathvariable):
@@ -53,6 +50,8 @@ class PathSelector(Frame):
 
 
 test1 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
+test2 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
+test3 = PathSelector(description="Minecraft.Client/Windows64Media/loc/",                  pathvariable=CustomPath.Windows64Media_loc)
 
 """
 buttonFrame =   Frame(window)

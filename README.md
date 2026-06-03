@@ -8,7 +8,10 @@ into one project.
 - Python (at least Python 3.0, check your version using ```python --version```)
 
 ### How do I rename something?
-Simply edit the data in ```Windows64Media/loc/stringsGeneric.xml``` and run ```main.py```, it's that easy.
+When you create a new strings ID (IDS_ OR IDS_DESC_) you just need to add that ID into ```Windows64Media/loc/stringsGeneric.xml```  
+and run ```main.py```, it's that easy.
+
+You don't need to edit ```strings.h``` itself, as the program generates it anyway and your new IDs with it anyway.
 
 ### I ran into an problem.
 Check the output window for information, if it isn't clear what happened or you've found a bug, consider opening an issue.

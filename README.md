@@ -7,10 +7,14 @@ into one project.
 - Node.js (for MCLCE-StringTable-Compiler)
 - Python (at least Python 3.0, check your version using ```python --version```)
 
-### How do I rename something?
-When you create a new strings ID (IDS_ OR IDS_DESC_) you just need to add that ID into ```Windows64Media/loc/stringsGeneric.xml``` and run ```main.py```, it's that easy.
+### How do I use it?
+When you use a new ID (IDS_EXAMPLE or IDS_DESC_EXAMPLE) in your project:
+- Open ```Windows64Media/loc/stringsGeneric.xml```
+- Define what text (value) you want to display for the ID (you can use the other IDS as a reference).
+- Save the file
+- Open this project and run ```main.py```.
 
-You don't need to edit ```strings.h``` itself, as the program generates it anyway and your new IDs with it anyway.
+You don't need to edit ```strings.h``` itself, as the program generates it and your new IDs with it anyway.
 
 ### I ran into an problem.
 Check the output window for information, if it isn't clear what happened or you've found a bug, consider opening an issue.

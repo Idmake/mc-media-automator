@@ -16,7 +16,7 @@ When you use a new ID (IDS_EXAMPLE or IDS_DESC_EXAMPLE) in your project:
 
 You don't need to edit ```strings.h``` itself, as the program generates it and your new IDs with it anyway.
 
-### I ran into an problem.
+### I ran into a problem.
 Check the output window for information, if it isn't clear what happened or you've found a bug, consider opening an issue.
 
 # Credits

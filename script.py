@@ -34,7 +34,7 @@ def run_script(CustomPath, PredefinedPath):
 
 
     
-    # xcopy "source file" "destination file" /Y /-I
+    # xcopy "source file" "destination file" /Y /I
     # xcopy "source file" "destination folder" /Y /I
     # erase "source file"
 
@@ -50,7 +50,7 @@ def run_script(CustomPath, PredefinedPath):
     def replace_strings():
         print("REPLACING STRINGS FILE")
         set_directory(PredefinedPath.MCLCE_StringTable_Compiler)
-        execute_command(f"xcopy strings.h \"{CustomPath.Windows64Media.get()}\" /Y /-I", shell=True)
+        execute_command(f"xcopy strings.h \"{CustomPath.Windows64Media.get()}\" /Y /I", shell=True)
 
     def get_languages_path():
         print("GETTING LANGUAGES PATH")
@@ -73,7 +73,7 @@ def run_script(CustomPath, PredefinedPath):
         # We "copy" the languages.loc file which was made earlier.
         # This mimics the action of replacing a file but comes at the cost of being a fucking headache
         
-        execute_command(f"xcopy \"{zipName}\" \"{tempName}\" /Y /-I", shell=True)
+        execute_command(f"xcopy \"{zipName}\" \"{tempName}\" /Y /I", shell=True)
         with zipfile.ZipFile(file=tempName, mode="r") as tempzip:
             with zipfile.ZipFile(file=zipName, mode="w", compression=zipfile.ZIP_DEFLATED) as zip:
                 # "Copy" the created languages.loc to the destination inside the zip.
@@ -97,7 +97,7 @@ def run_script(CustomPath, PredefinedPath):
     def replace_mediawindows64_arc():
         print("REPLACING MEDIAWINDOWS64 ARC FILE")
         set_directory(PredefinedPath.mc_arc_util_master)
-        execute_command(f"xcopy out.arc \"{CustomPath.MediaWindows64_arc.get()}\" /Y /-I", shell=True)
+        execute_command(f"xcopy out.arc \"{CustomPath.MediaWindows64_arc.get()}\" /Y /I", shell=True)
 
 
 

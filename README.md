@@ -11,8 +11,9 @@ into one project.
 Simply edit the data in ```Windows64Media/loc/stringsGeneric.xml``` and run ```main.py```, it's that easy.
 
 ### I ran into an problem.
-Check the output window for information, if it isn't clear what happened or you found a bug, consider opening an issue.
+Check the output window for information, if it isn't clear what happened or you've found a bug, consider opening an issue.
 
 # Credits
-[Luki](https://github.com/codeHusky) for MCLCE-StringTable-Compiler  
-[Miku-666](https://github.com/nullptrref) for mc-arc-util-master  
+[Luki](https://github.com/codeHusky) - MCLCE-StringTable-Compiler  
+[Miku-666](https://github.com/nullptrref) - mc-arc-util-master  
+[Stefan](https://github.com/Idmake)  

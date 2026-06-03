@@ -54,8 +54,8 @@ def run_script(CustomPath, PredefinedPath):
 
     def get_languages_path():
         print("GETTING LANGUAGES PATH")
-        print (f"{PredefinedPath.MCLCE_StringTable_Compiler + "/" + "languages.loc"}")
-        return f"{PredefinedPath.MCLCE_StringTable_Compiler + "/" + "languages.loc"}" 
+        print (f"{PredefinedPath.MCLCE_StringTable_Compiler}/languages.loc")
+        return f"{PredefinedPath.MCLCE_StringTable_Compiler}/languages.loc" 
         
     def convert_arc_to_zip():
         print("CONVERTING ARC TO ZIP")
